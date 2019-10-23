@@ -1,0 +1,54 @@
+﻿@model Rapidlaunch.Models.Staff
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.roleIdentID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.roleIdentID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffTel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffTel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.firstNameIdent)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.firstNameIdent)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lastNameIdent)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lastNameIdent)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.staffEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.staffEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.itAccountIdentID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.itAccountIdentID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.staffID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

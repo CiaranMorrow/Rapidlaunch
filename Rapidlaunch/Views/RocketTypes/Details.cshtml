@@ -1,0 +1,42 @@
+﻿@model Rapidlaunch.Models.RocketType
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>RocketType</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.width)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.width)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.height)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.height)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rocketignitor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rocketignitor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rocketPropellant)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rocketPropellant)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.rocketTypeID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

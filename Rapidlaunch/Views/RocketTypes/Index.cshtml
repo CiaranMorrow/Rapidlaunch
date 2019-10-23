@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Rapidlaunch.Models.RocketType>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rocketignitor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rocketPropellant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rocketignitor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rocketPropellant)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.rocketTypeID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.rocketTypeID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.rocketTypeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
