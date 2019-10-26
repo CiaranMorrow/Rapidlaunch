@@ -1,16 +1,20 @@
 ﻿@model IEnumerable<Rapidlaunch.Models.Staff>
-
 @{
     ViewData["Title"] = "Index";
 }
+    <link href="~/css/site.css" rel="stylesheet" />
+<body> 
 
-<h1>Index</h1>
+<h1>Staff Data</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-hover table-responsive">
+    <caption>List of Staff</caption>
+
+    <thead class="thead-dark ">
+        
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.roleIdentID)
@@ -32,34 +36,37 @@
             </th>
             <th></th>
         </tr>
-    </thead>
+    </>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.roleIdentID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.staffTel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.firstNameIdent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastNameIdent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.staffEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.itAccountIdentID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.staffID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.staffID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.staffID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.roleIdentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.staffTel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstNameIdent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastNameIdent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.staffEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.itAccountIdentID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.staffID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.staffID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.staffID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+    </body>

@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Rapidlaunch.Models.HomePage>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+    <div class="card-columns">
+        <div class="card; border border-primary">
+            <p>  </p>
+            <div style="width:100%; text-align:center ">
+                <a class="card-img-top" asp-area="" asp-controller="LaunchHomePage" asp-action="Index"> <img src="~/Assets/LaunchImg.png" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Launch</h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="Launches" asp-action="Index"> Launches </a> l <a asp-area="" asp-controller="Schedules" asp-action="Index"> Schedules</a> l
+                        <a asp-area="" asp-controller="PadStatus" asp-action="Index"> Pad Status</a> l <a asp-area="" asp-controller="Rockets" asp-action="Index"> Rockets</a>
+                        l <a asp-area="" asp-controller="RocketTypes" asp-action="Index"> Rocket Types </a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card; border border-primary">
+            <div style="width:100%; text-align:center">
+                <div class="row">
+                    <div class="carousel slide" style="width: 500px; margin: 0 auto">
+                        <div class="col align-self-center">
+                            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-interval="4000">
+                                        <a class="weatherwidget-io" href="https://forecast7.com/en/52d36n1d17/england/" data-label_1="England" data-label_2="Launch Site A" data-theme="original">England Launch Site A</a>
+                                        <script>
+                                            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                                        </script>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <a class="weatherwidget-io" href="https://forecast7.com/en/27d66n81d52/florida/" data-label_1="Florida" data-label_2="Launch Site B" data-theme="original">Florida Launch Site B</a>
+                                        <script>
+                                            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                                        </script>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <a class="weatherwidget-io" href="https://forecast7.com/en/45d6263d31/baikonur/" data-label_1="BAIKONUR" data-label_2="Launch Site C" data-theme="original">BAIKONUR Launch Site C</a>
+                                        <script>
+                                            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                                        </script>
+                                    </div>
+
+                                    <div class="carousel-item" data-interval="4000">
+                                        <a class="weatherwidget-io" href="https://forecast7.com/en/5d16n52d65/kourou/" data-label_1="KOUROU" data-label_2="Launch Site D" data-theme="original">KOUROU Launch Site D</a>
+                                        <script>
+                                            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                                        </script>
+                                    </div>
+
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card p-3 ; border border-primary">
+            <div style="width:100%; text-align:center">
+                <div class="row">
+                    <div class="carousel slide" style="width: 500px; margin: 0 auto">
+                        <div class="col align-self-center">
+                            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Neil Armstrong was the first man to walk on the moon. I am the first man to piss his pants on the moon.”</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Buzz Aldrin
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“I looked and looked but I didn't see God.” </p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Yuri Gagarin
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Curiosity is the essence of our existence.” </p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Buzz Aldrin <cite title="Source Title">Magniuficent Desolation</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Its a fixer-upper of a planet, but we could make it work.”.</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Elon Musk
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card ; border border-primary">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <a class="card-img-top" asp-area="" asp-controller="StaffHomePage" asp-action="Index"> <img src="~/Assets/User Images.jpg" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Staff</h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="Staffs" asp-action="Index"> Staff </a>
+                        l <a asp-area="" asp-controller="StaffSchedules" asp-action="Index"> Staff Schedules</a>
+                        l <a asp-area="" asp-controller="StaffAddresses" asp-action="Index"> Staff Addresses</a>
+                    </div>
+
+                </p>
+            </div>
+        </div>
+        <div class="card bg-primary text-white text-center p-3 ; border border-primary">
+            <blockquote class="blockquote mb-0">
+                <p>Log out? </p>
+                <footer class="blockquote-footer">
+                    <small>
+                        Someone famous in <cite title="Source Title">Source Title</cite>
+                    </small>
+                </footer>
+            </blockquote>
+        </div>
+        <div class="card ; border border-primary">
+            <div style="width:100%; text-align:center">
+                <p> </p>
+                <a class="card-img-top" asp-area="" asp-controller="SafetyHomePage" asp-action="Index"> <img src="~/Assets/Safety.png" class="rounded" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Safety</h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="StaffSafetyRecords" asp-action="Index"> Staff Safety Records</a>
+                        l <a asp-area="" asp-controller="SafetyRatings" asp-action="Index"> Safety Rating</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+
+        <div class="card ; border border-primary">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <p> </p>
+                <a class="card-img-top" asp-area="" asp-controller="ProviderHomePage" asp-action="Index"> <img src="~/Assets/Provider.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Provider</h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="Providers" asp-action="Index"> Providers</a> l <a asp-area="" asp-controller="ProviderContacts" asp-action="Index"> Contacts</a> l
+                        <a asp-area="" asp-controller="ProviderAddresses" asp-action="Index"> Addresses</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card ; border border-primary">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <a class="card-img-top" asp-area="" asp-controller="MiscellaneousHomePage" asp-action="Index"> <img src="~/Assets/LaunchImg.png" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Miscellaneous</h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="ITAccounts" asp-action="Index"> Launches </a> l <a asp-area="" asp-controller="ITAccountTypes" asp-action="Index"> Schedules</a> l
+                        <a asp-area="" asp-controller="Addresses" asp-action="Index"> Recognised Addresses </a> l <a asp-area="" asp-controller="Countries" asp-action="Index"> Recognised Countries</a>
+                        l <a asp-area="" asp-controller="Roles" asp-action="Index"> Roles </a>
+                    </div>
+                </p>
+            </div>
+        </div>
+
+    </div>

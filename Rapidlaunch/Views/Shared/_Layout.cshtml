@@ -19,38 +19,90 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rapidlaunch</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-light box-shadows ">
+            <div class="container-fluid ">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/Assets/RapidLaunchTester.PNG" , height="60" width="220" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Launch</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Launches" asp-action="Index">Launch</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> Schedule </a>
+                                <a class="dropdown-item" asp-area="" asp-controller="PadStatus" asp-action="Index">Pad Status</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Rockets" asp-action="Index">Rockets</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="RocketTypes" asp-action="Index">Rocket Types</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="LaunchHomePage" asp-action="Index">Launch Home Page </a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Staff</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Staffs" asp-action="Index">Staff </a>
+                                <a class="dropdown-item" asp-area="" asp-controller="StaffAddresses" asp-action="Index">Staff Addresses</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index">Staff Schedules</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="StaffHomePage" asp-action="Index">Staff Home Page </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Safety</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="SafetyRatings" asp-action="Index">Safety Ratings</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="StaffSafetyRecords" asp-action="Index">Staff Safety Records</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="RocketTypes" asp-action="Index">Rocket Types</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="SafetyHomePage" asp-action="Index">Provider Home Page </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Provider</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Providers" asp-action="Index">Providers</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="ProviderContacts" asp-action="Index">Provider Contacts </a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Provider Addresses" asp-action="Index">Provider Address</a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="ProviderHomePage" asp-action="Index">Safety Home Page </a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Misc</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="ITAccounts" asp-action="Index">IT Accounts</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="ITAccountTypes" asp-action="Index">IT Account Types</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="ITAccounts" asp-action="Index">Recognised Addresses</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="ITAccounts" asp-action="Index">Recognised Countries</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="MiscellaneousHomePage" asp-action="Index">Misc Home Page </a>
+                            </div>
                         </li>
                     </ul>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="HomePage" asp-action="Index">Home</a>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+  
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - Rapidlaunch - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        <div class="container-fluid">
+            <!-- container fluid -->
+            Rapid Launch Ltd &copy; 2019 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>    
     </footer>
 
     <environment include="Development">
@@ -72,7 +124,6 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @RenderSection("Scripts", required: false)
+        @RenderSection("Scripts", required: false)
 </body>
 </html>
