@@ -76,14 +76,13 @@ h1 {
 thead {
     display: table-header-group;
     vertical-align: middle;
-    border-color: inherit; 
+    border-color: #90caf9;
 }
 tr:hover {
-    background-color: #ffff99;
-
+    background-color: #90caf9;
 }
 body {
-    
+ 
     background-image: url('../assets/wallpaper.jpg');
 }
 
