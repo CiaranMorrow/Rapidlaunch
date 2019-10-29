@@ -24,10 +24,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.padStatus)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PadStatusID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PadStatusID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PadStatusID">Delete</a>
+            <td class="tester-editor">
+                <div class="dropdownIndex">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Data Option
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <a asp-action="Edit" asp-route-id="@item.PadStatusID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.PadStatusID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PadStatusID">Delete</a>
+                    </ul>
+                </div>
             </td>
         </tr>
 }

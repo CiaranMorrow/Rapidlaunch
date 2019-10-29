@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+    <link href="~/css/site.css" rel="stylesheet" />
 <h1>Index</h1>
 
 <p>
@@ -24,12 +24,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.safetyRating)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.safetyRatingID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.safetyRatingID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.safetyRatingID">Delete</a>
+             <td class="tester-editor">
+                <div class="dropdownIndex">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Data Option
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <a asp-action="Edit" asp-route-id="@item.safetyRatingID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.safetyRatingID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.safetyRatingID">Delete</a>
+                     </ul>
+                </div>
             </td>
-        </tr>
+            </tr>
 }
     </tbody>
 </table>

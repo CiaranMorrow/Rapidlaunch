@@ -4,95 +4,133 @@
 }
 
 
-    <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Launches
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                    <p> Content Filler</p>
-                    <div class="container-fluid">
-                        <a asp-area="" asp-controller="Launches" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Launches" asp-action="Index"> View</a>
-                    </div>
-                </div>
-            </div>
+<h1> Launch Page</h1>
+<div class="card-columns">
+    <div class="card">
+        <p>  </p>
+        <div style="width:100%; text-align:center; border-color:transparent;">
+            <a class="card-img-top" asp-area="" asp-controller="Launches" asp-action="Index"> <img src="~/Assets/S.png" , height="200" width="200" style="text-align:center" /></a>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Launch Staff Schedules
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                    <p> Content Filler</p>
-                    <div class="container-fluid">
-                        <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Create"> Create</a> l <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> View</a>
-
-                    </div>
+        <div class="card-body">
+            <h5 class="card-title"><a asp-area="" asp-controller="Launches" asp-action="Index"> Launch </a></h5>
+            <p class="card-text">
+                <div class="container-fluid">
+                    <a asp-area="" asp-controller="Launches" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Launches" asp-action="Index"> View</a>
                 </div>
-            </div>
+            </p>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Pad Status
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                    <p> Content Filler</p>
-                    <div class="container-fluid">
-                        <a asp-area="" asp-controller="PadStatus" asp-action="Create"> Create</a> l <a asp-area="" asp-controller="PadStatus" asp-action="Index"> View</a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingFour">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        Rockets
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                <div class="card-body">
-                    <p> Content Filler</p>
-                    <div class="container-fluid">
-                        <a asp-area="" asp-controller="Rockets" asp-action="Create"> Create</a> l <a asp-area="" asp-controller="Rockets" asp-action="Index"> View</a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingFive">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        Rocket Types
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                    <p> Content Filler</p>
-                    <div class="container-fluid">
-                        <a asp-area="" asp-controller="RocketTypes" asp-action="Create"> Create</a> l <a asp-area="" asp-controller="RocketTypes" asp-action="Index"> View</a>
-
+    </div>
+    <div class="card p-3">
+        <div style="width:100%; text-align:center">
+            <div class="row">
+                <div class="carousel slide" style="width: 500px; margin: 0 auto">
+                    <div class="col align-self-center">
+                        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-interval="4000">
+                                    <blockquote class="blockquote mb-0 card-body">
+                                        <p>“Neil Armstrong was the first man to walk on the moon. I am the first man to piss his pants on the moon.”</p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                                                Buzz Aldrin
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                                <div class="carousel-item" data-interval="4000">
+                                    <blockquote class="blockquote mb-0 card-body">
+                                        <p>“I looked and looked but I didn't see God.” </p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                                                Yuri Gagarin
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                                <div class="carousel-item" data-interval="4000">
+                                    <blockquote class="blockquote mb-0 card-body">
+                                        <p>“Curiosity is the essence of our existence.” </p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                                                Buzz Aldrin <cite title="Source Title">Magniuficent Desolation</cite>
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                                <div class="carousel-item" data-interval="4000">
+                                    <blockquote class="blockquote mb-0 card-body">
+                                        <p>“Its a fixer-upper of a planet, but we could make it work.”.</p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                                                Elon Musk
+                                            </small>
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="card">
+        <p>  </p>
+        <div style="width:100%; text-align:center">
+            <a class="card-img-top" asp-area="" asp-controller="LaunchStaffSchedules" asp-action="LaunchStaffSchedules"> <img src="~/Assets/SA.png" , height="200" width="200" style="text-align:center" /></a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> Schedules </a></h5>
+            <p class="card-text">
+                <div class="container-fluid">
+                    <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> View</a>
+                </div>
+            </p>
+        </div>
+    </div>
+    <div class="card ">
+        <p>  </p>
+        <div style="width:100%; text-align:center">
+            <p> </p>
+            <a class="card-img-top" asp-area="" asp-controller="PadStatus" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><a asp-area="" asp-controller="PadStatus" asp-action="Index">Pad Status </a></h5>
+            <p class="card-text">
+                <div class="container-fluid">
+                    <a asp-area="" asp-controller="PadStatus" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="PadStatus" asp-action="Index"> View</a>
+                </div>
+            </p>
+        </div>
+    </div>
+    <div class="card ">
+        <p>  </p>
+        <div style="width:100%; text-align:center">
+            <p> </p>
+            <a class="card-img-top" asp-area="" asp-controller="Rockets" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><a asp-area="" asp-controller="Rockets" asp-action="Index">Rockets </a></h5>
+            <p class="card-text">
+                <div class="container-fluid">
+                    <a asp-area="" asp-controller="Rockets" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Rockets" asp-action="Index"> View</a>
+                </div>
+            </p>
+        </div>
+    </div>
+    <div class="card ">
+        <p>  </p>
+        <div style="width:100%; text-align:center">
+            <p> </p>
+            <a class="card-img-top" asp-area="" asp-controller="RocketTypes" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><a asp-area="" asp-controller="RocketTypes" asp-action="Index">Rocket Types </a></h5>
+            <p class="card-text">
+                <div class="container-fluid">
+                    <a asp-area="" asp-controller="RocketTypes" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="RocketTypes" asp-action="Index"> View</a>
+                </div>
+            </p>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,103 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
+<h1> Provider</h1>
+    <div class="card-columns">
+        <div class="card">
+            <p>  </p>
+            <div style="width:100%; text-align:center; border-color:transparent;">
+                <a class="card-img-top" asp-area="" asp-controller="SafetyRatings" asp-action="Index"> <img src="~/Assets/S.png" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="SafetyRatings" asp-action="Index"> Providers </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="Providers" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Providers" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card p-3">
+            <div style="width:100%; text-align:center">
+                <div class="row">
+                    <div class="carousel slide" style="width: 500px; margin: 0 auto">
+                        <div class="col align-self-center">
+                            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Neil Armstrong was the first man to walk on the moon. I am the first man to piss his pants on the moon.”</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Buzz Aldrin
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“I looked and looked but I didn't see God.” </p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Yuri Gagarin
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Curiosity is the essence of our existence.” </p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Buzz Aldrin <cite title="Source Title">Magniuficent Desolation</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Its a fixer-upper of a planet, but we could make it work.”.</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Elon Musk
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <a class="card-img-top" asp-area="" asp-controller="ProviderContacts" asp-action="Staff Safety Records"> <img src="~/Assets/SA.png" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="ProviderContacts" asp-action="Index"> Provider Contacts </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="ProviderContacts" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="ProviderContacts" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card ">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <p> </p>
+                <a class="card-img-top" asp-area="" asp-controller="ProviderAddresses" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="ProviderAddresses" asp-action="Index"> Provider Addresses</a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="ProviderAddresses" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="ProviderAddresses" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>

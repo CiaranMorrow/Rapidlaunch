@@ -58,11 +58,13 @@ body {
 
             color:white;
    }
-  .h5{
-      color:black;
-      text-align:center;
-        
-  }
+.h5 {
+    color: black;
+    text-align: center;
+    height: 200px;
+    position: relative;
+    border: 3px solid green;
+}
 h1 {
     display: block;
     font-size: 2em;
@@ -72,19 +74,92 @@ h1 {
     margin-right: 0;
     font-weight: bold;
     color: red;
+    font-family: "Comic Sans MS";
+    text-align: center;
 }
 thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: #90caf9;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: purple;
+    align-self:baseline;
+    text-align:center;
+    
 }
+
+tbody {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: black;
+
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+th:hover {
+    background-color: #ddd;
+}
+
+
 tr:hover {
-    background-color: #90caf9;
+    background-color: #ddd;
 }
 body {
- 
+
     background-image: url('../assets/wallpaper.jpg');
 }
 
+.col-md-4 {
+    box-sizing: border-box;
+    text-align: center;
+    
+}
+.form-group {
+    width: 50%;
+    margin-left: 130%
+}
 
+.tester-editor{
+    color:chartreuse;
 
+}
+.card mb-3 {
+    max-width: 540px;
+    border-radius: 50px;
+}
+.card-img-top{
+    max-height:50%;
+    max-width:80%;
+    align-self:center;
+    border-radius:100px;
+    background-color:transparent;
+}
+.card-body h3 {
+    text-align: center;
+    position: relative;
+    
+}
+.card {
+    background-color:transparent;
+    border-radius:100px;
+    border-color:transparent;
+    }
+.card card-columns {
+        background-color: transparent;
+        border-radius: 100px;
+        border-color: transparent;
+    }
+.navbar-brand{
+    background-color:transparent;
+}
+.card-columns card card-body card-title h5 {
+    align-content: center;
+}
+.card-title{
+    text-align:center;
+    color:whitesmoke;
+}
+.container-fluid{
+    text-align:center;
+}

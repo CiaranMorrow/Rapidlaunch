@@ -30,10 +30,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.rocketType.rocketTypeID)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <td class="tester-editor">
+                <div class="dropdownIndex">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Data Option
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+                    </ul>
+                </div>
             </td>
         </tr>
 }

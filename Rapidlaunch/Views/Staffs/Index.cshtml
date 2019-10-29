@@ -10,10 +10,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-hover table-responsive">
+<table class="table ">
     <caption>List of Staff</caption>
 
-    <thead class="thead-dark ">
+    <thead >
         
         <tr>
             <th>
@@ -59,14 +59,25 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.itAccountIdentID)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.staffID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.staffID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.staffID">Delete</a>
+                <td class="tester-editor">
+                    <div class="dropdownIndex">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Data Option
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <a asp-action="Edit" asp-route-id="@item.staffID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.staffID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.staffID">Delete</a>
+                        </ul>
+                    </div>  
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+
 
     </body>

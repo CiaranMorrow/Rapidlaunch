@@ -42,10 +42,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.rocketPropellant)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.rocketTypeID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.rocketTypeID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.rocketTypeID">Delete</a>
+            <td class="tester-editor">
+                <div class="dropdownIndex">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Data Option
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <a asp-action="Edit" asp-route-id="@item.rocketTypeID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.rocketTypeID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.rocketTypeID">Delete</a>
+                    </ul>
+                </div>
             </td>
         </tr>
 }

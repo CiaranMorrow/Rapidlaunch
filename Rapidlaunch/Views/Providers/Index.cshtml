@@ -30,10 +30,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProviderRegNo)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProviderID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProviderID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProviderID">Delete</a>
+            <td class="tester-editor">
+                <div class="dropdownIndex">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Data Option
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <a asp-action="Edit" asp-route-id="@item.ProviderID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProviderID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProviderID">Delete</a>
+                    </ul>
+                </div>
             </td>
         </tr>
 }
