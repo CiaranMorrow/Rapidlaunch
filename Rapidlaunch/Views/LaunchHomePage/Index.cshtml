@@ -1,71 +1,78 @@
-﻿@model IEnumerable<Rapidlaunch.Models.HomePage>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IEnumerable<Rapidlaunch.Models.HomePage>
 @{
     ViewData["Title"] = "Index";
 }
+@if (SignInManager.IsSignedIn(User))
+{
 
 
-<h1> Launch Page</h1>
-<div class="card-columns">
-    <div class="card">
-        <p>  </p>
-        <div style="width:100%; text-align:center; border-color:transparent;">
-            <a class="card-img-top" asp-area="" asp-controller="Launches" asp-action="Index"> <img src="~/Assets/S.png" , height="200" width="200" style="text-align:center" /></a>
+    <h1> Launch Page</h1>
+    <div class="card-columns">
+        <div class="card">
+            <p>  </p>
+            <div style="width:100%; text-align:center; border-color:transparent;">
+                <a class="card-img-top" asp-area="" asp-controller="Launches" asp-action="Index"> <img src="~/Assets/S.png" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="Launches" asp-action="Index"> Launch </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="Launches" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Launches" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title"><a asp-area="" asp-controller="Launches" asp-action="Index"> Launch </a></h5>
-            <p class="card-text">
-                <div class="container-fluid">
-                    <a asp-area="" asp-controller="Launches" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Launches" asp-action="Index"> View</a>
-                </div>
-            </p>
-        </div>
-    </div>
-    <div class="card p-3">
-        <div style="width:100%; text-align:center">
-            <div class="row">
-                <div class="carousel slide" style="width: 500px; margin: 0 auto">
-                    <div class="col align-self-center">
-                        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" data-interval="4000">
-                                    <blockquote class="blockquote mb-0 card-body">
-                                        <p>“Neil Armstrong was the first man to walk on the moon. I am the first man to piss his pants on the moon.”</p>
-                                        <footer class="blockquote-footer">
-                                            <small class="text-muted">
-                                                Buzz Aldrin
-                                            </small>
-                                        </footer>
-                                    </blockquote>
-                                </div>
-                                <div class="carousel-item" data-interval="4000">
-                                    <blockquote class="blockquote mb-0 card-body">
-                                        <p>“I looked and looked but I didn't see God.” </p>
-                                        <footer class="blockquote-footer">
-                                            <small class="text-muted">
-                                                Yuri Gagarin
-                                            </small>
-                                        </footer>
-                                    </blockquote>
-                                </div>
-                                <div class="carousel-item" data-interval="4000">
-                                    <blockquote class="blockquote mb-0 card-body">
-                                        <p>“Curiosity is the essence of our existence.” </p>
-                                        <footer class="blockquote-footer">
-                                            <small class="text-muted">
-                                                Buzz Aldrin <cite title="Source Title">Magniuficent Desolation</cite>
-                                            </small>
-                                        </footer>
-                                    </blockquote>
-                                </div>
-                                <div class="carousel-item" data-interval="4000">
-                                    <blockquote class="blockquote mb-0 card-body">
-                                        <p>“Its a fixer-upper of a planet, but we could make it work.”.</p>
-                                        <footer class="blockquote-footer">
-                                            <small class="text-muted">
-                                                Elon Musk
-                                            </small>
-                                        </footer>
-                                    </blockquote>
+        <div class="card p-3">
+            <div style="width:100%; text-align:center">
+                <div class="row">
+                    <div class="carousel slide" style="width: 500px; margin: 0 auto">
+                        <div class="col align-self-center">
+                            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Neil Armstrong was the first man to walk on the moon. I am the first man to piss his pants on the moon.”</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Buzz Aldrin
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“I looked and looked but I didn't see God.” </p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Yuri Gagarin
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Curiosity is the essence of our existence.” </p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Buzz Aldrin <cite title="Source Title">Magniuficent Desolation</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="carousel-item" data-interval="4000">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>“Its a fixer-upper of a planet, but we could make it work.”.</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Elon Musk
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -73,64 +80,73 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <a class="card-img-top" asp-area="" asp-controller="LaunchStaffSchedules" asp-action="LaunchStaffSchedules"> <img src="~/Assets/SA.png" , height="200" width="200" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> Schedules </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card ">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <p> </p>
+                <a class="card-img-top" asp-area="" asp-controller="PadStatus" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="PadStatus" asp-action="Index">Pad Status </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="PadStatus" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="PadStatus" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card ">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <p> </p>
+                <a class="card-img-top" asp-area="" asp-controller="Rockets" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="Rockets" asp-action="Index">Rockets </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="Rockets" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Rockets" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="card ">
+            <p>  </p>
+            <div style="width:100%; text-align:center">
+                <p> </p>
+                <a class="card-img-top" asp-area="" asp-controller="RocketTypes" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a asp-area="" asp-controller="RocketTypes" asp-action="Index">Rocket Types </a></h5>
+                <p class="card-text">
+                    <div class="container-fluid">
+                        <a asp-area="" asp-controller="RocketTypes" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="RocketTypes" asp-action="Index"> View</a>
+                    </div>
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <p>  </p>
-        <div style="width:100%; text-align:center">
-            <a class="card-img-top" asp-area="" asp-controller="LaunchStaffSchedules" asp-action="LaunchStaffSchedules"> <img src="~/Assets/SA.png" , height="200" width="200" style="text-align:center" /></a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> Schedules </a></h5>
-            <p class="card-text">
-                <div class="container-fluid">
-                    <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="LaunchStaffSchedules" asp-action="Index"> View</a>
-                </div>
-            </p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>You are not authorised to view this content - <br />Please log in.</h2>
+            <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
         </div>
     </div>
-    <div class="card ">
-        <p>  </p>
-        <div style="width:100%; text-align:center">
-            <p> </p>
-            <a class="card-img-top" asp-area="" asp-controller="PadStatus" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><a asp-area="" asp-controller="PadStatus" asp-action="Index">Pad Status </a></h5>
-            <p class="card-text">
-                <div class="container-fluid">
-                    <a asp-area="" asp-controller="PadStatus" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="PadStatus" asp-action="Index"> View</a>
-                </div>
-            </p>
-        </div>
-    </div>
-    <div class="card ">
-        <p>  </p>
-        <div style="width:100%; text-align:center">
-            <p> </p>
-            <a class="card-img-top" asp-area="" asp-controller="Rockets" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><a asp-area="" asp-controller="Rockets" asp-action="Index">Rockets </a></h5>
-            <p class="card-text">
-                <div class="container-fluid">
-                    <a asp-area="" asp-controller="Rockets" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="Rockets" asp-action="Index"> View</a>
-                </div>
-            </p>
-        </div>
-    </div>
-    <div class="card ">
-        <p>  </p>
-        <div style="width:100%; text-align:center">
-            <p> </p>
-            <a class="card-img-top" asp-area="" asp-controller="RocketTypes" asp-action="Index"> <img src="~/Assets/SS.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><a asp-area="" asp-controller="RocketTypes" asp-action="Index">Rocket Types </a></h5>
-            <p class="card-text">
-                <div class="container-fluid">
-                    <a asp-area="" asp-controller="RocketTypes" asp-action="Create"> Create </a> l <a asp-area="" asp-controller="RocketTypes" asp-action="Index"> View</a>
-                </div>
-            </p>
-        </div>
-    </div>
-</div>
+}

@@ -22,7 +22,7 @@ namespace Rapidlaunch.Controllers
         // GET: ProviderAddresses
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.ProviderAddresses.Include(p => p.Provider);
+            var applicationDbContext = _context.ProviderAddresses.Include(p => p.Address).Include(p => p.Provider);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,8 +35,9 @@ namespace Rapidlaunch.Controllers
             }
 
             var providerAddress = await _context.ProviderAddresses
+                .Include(p => p.Address)
                 .Include(p => p.Provider)
-                .FirstOrDefaultAsync(m => m.providerID == id);
+                .FirstOrDefaultAsync(m => m.ProviderID == id);
             if (providerAddress == null)
             {
                 return NotFound();
@@ -48,7 +49,8 @@ namespace Rapidlaunch.Controllers
         // GET: ProviderAddresses/Create
         public IActionResult Create()
         {
-            ViewData["providerID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID");
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID");
+            ViewData["ProviderID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace Rapidlaunch.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("providerID,addressIdentID")] ProviderAddress providerAddress)
+        public async Task<IActionResult> Create([Bind("ProviderID,AddressID")] ProviderAddress providerAddress)
         {
             if (ModelState.IsValid)
             {
@@ -65,24 +67,26 @@ namespace Rapidlaunch.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["providerID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID", providerAddress.providerID);
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID", providerAddress.AddressID);
+            ViewData["ProviderID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID", providerAddress.ProviderID);
             return View(providerAddress);
         }
 
         // GET: ProviderAddresses/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var providerAddress = await _context.ProviderAddresses.FindAsync(id);
+            var providerAddress = await _context.ProviderAddresses.FindAsync(id, id2);
             if (providerAddress == null)
             {
                 return NotFound();
             }
-            ViewData["providerID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID", providerAddress.providerID);
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID", providerAddress.AddressID);
+            ViewData["ProviderID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID", providerAddress.ProviderID);
             return View(providerAddress);
         }
 
@@ -91,9 +95,9 @@ namespace Rapidlaunch.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("providerID,addressIdentID")] ProviderAddress providerAddress)
+        public async Task<IActionResult> Edit(int id, [Bind("ProviderID,AddressID")] ProviderAddress providerAddress)
         {
-            if (id != providerAddress.providerID)
+            if (id != providerAddress.ProviderID)
             {
                 return NotFound();
             }
@@ -107,7 +111,7 @@ namespace Rapidlaunch.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProviderAddressExists(providerAddress.providerID))
+                    if (!ProviderAddressExists(providerAddress.ProviderID))
                     {
                         return NotFound();
                     }
@@ -118,21 +122,23 @@ namespace Rapidlaunch.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["providerID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID", providerAddress.providerID);
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID", providerAddress.AddressID);
+            ViewData["ProviderID"] = new SelectList(_context.Providers, "ProviderID", "ProviderID", providerAddress.ProviderID);
             return View(providerAddress);
         }
 
         // GET: ProviderAddresses/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? id2  )
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
             var providerAddress = await _context.ProviderAddresses
+                .Include(p => p.Address)
                 .Include(p => p.Provider)
-                .FirstOrDefaultAsync(m => m.providerID == id);
+                .FirstOrDefaultAsync(m => m.ProviderID == id && m.ProviderID == id2);
             if (providerAddress == null)
             {
                 return NotFound();
@@ -144,9 +150,9 @@ namespace Rapidlaunch.Controllers
         // POST: ProviderAddresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id, int? id2)
         {
-            var providerAddress = await _context.ProviderAddresses.FindAsync(id);
+            var providerAddress = await _context.ProviderAddresses.FindAsync(id2, id);
             _context.ProviderAddresses.Remove(providerAddress);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -154,7 +160,7 @@ namespace Rapidlaunch.Controllers
 
         private bool ProviderAddressExists(int id)
         {
-            return _context.ProviderAddresses.Any(e => e.providerID == id);
+            return _context.ProviderAddresses.Any(e => e.ProviderID == id);
         }
     }
 }

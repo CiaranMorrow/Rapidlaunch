@@ -1,50 +1,56 @@
-﻿@model IEnumerable<Rapidlaunch.Models.StaffSafetyRecord>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<Rapidlaunch.Models.StaffSafetyRecord>
 
 @{
     ViewData["Title"] = "Index";
 }
+@if (SignInManager.IsSignedIn(User))
+{
+        <h1>Index</h1>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SafetyRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rocketType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SafetyRating.safetyRatingID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rocketType.rocketTypeID)
-            </td>
-            <td class="tester-editor">
-                <div class="dropdownIndex">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                        Data Option
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-
-                    </ul>
-                </div>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Staff)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SafetyRating)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Staff.staffID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SafetyRating.safetyRatingID)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.staffID, id2 = item.safetyRatingID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.staffID, id2 = item.safetyRatingID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.staffID, id2 = item.safetyRatingID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <h2>You are not authorised to view this content - <br />Please log in.</h2>
+                <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
+            </div>
+        </div>
+    }

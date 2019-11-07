@@ -56,10 +56,10 @@ namespace Rapidlaunch.Data
                 .HasKey(c => new { c.safetyRatingID, c.staffID });
 
             builder.Entity<StaffAddress>()
-                .HasKey(c => new { c.staffAdrressID, c.staffIdentID });
+                .HasKey(c => new { c.staffID, c.AddressID });
 
             builder.Entity<ProviderAddress>()
-                .HasKey(c => new {  c.providerID, c.addressIdentID });
+                .HasKey(c => new {  c.ProviderID, c.AddressID});
             
                 
         }

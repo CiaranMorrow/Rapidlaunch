@@ -1,8 +1,13 @@
-﻿@model IEnumerable<Rapidlaunch.Models.MiscellaneousHomePage>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IEnumerable<Rapidlaunch.Models.MiscellaneousHomePage>
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (SignInManager.IsSignedIn(User))
+{
     <h1> Miscellaneous</h1>
     <div class="card-columns">
         <div class="card">
@@ -133,3 +138,12 @@
             </div>
         </div>
     </div>
+}
+else{
+<div class="row">
+<div class="col-md-4">
+    <h2>You are not authorised to view this content - <br />Please log in.</h2>
+    <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
+</div>
+</div>
+}

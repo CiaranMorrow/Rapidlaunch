@@ -10,8 +10,8 @@ using Rapidlaunch.Data;
 namespace Rapidlaunch.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191023132344_init")]
-    partial class init
+    [Migration("20191030124600_whatever")]
+    partial class whatever
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -260,9 +260,9 @@ namespace Rapidlaunch.Migrations
 
                     b.Property<int?>("PadStatusID");
 
-                    b.Property<int?>("ProviderAddressaddressIdentID");
+                    b.Property<int?>("ProviderAddressAddressID");
 
-                    b.Property<int?>("ProviderAddressproviderID");
+                    b.Property<int?>("ProviderAddressProviderID");
 
                     b.Property<int?>("ProviderID");
 
@@ -286,7 +286,7 @@ namespace Rapidlaunch.Migrations
 
                     b.HasIndex("RocketID");
 
-                    b.HasIndex("ProviderAddressproviderID", "ProviderAddressaddressIdentID");
+                    b.HasIndex("ProviderAddressProviderID", "ProviderAddressAddressID");
 
                     b.ToTable("tbl_Launches");
                 });
@@ -340,13 +340,11 @@ namespace Rapidlaunch.Migrations
 
             modelBuilder.Entity("Rapidlaunch.Models.ProviderAddress", b =>
                 {
-                    b.Property<int>("providerID");
+                    b.Property<int>("ProviderID");
 
-                    b.Property<int>("addressIdentID");
+                    b.Property<int>("AddressID");
 
-                    b.Property<int?>("AddressID");
-
-                    b.HasKey("providerID", "addressIdentID");
+                    b.HasKey("ProviderID", "AddressID");
 
                     b.HasIndex("AddressID");
 
@@ -479,19 +477,13 @@ namespace Rapidlaunch.Migrations
 
             modelBuilder.Entity("Rapidlaunch.Models.StaffAddress", b =>
                 {
-                    b.Property<int>("staffAdrressID");
+                    b.Property<int>("staffID");
 
-                    b.Property<int>("staffIdentID");
+                    b.Property<int>("AddressID");
 
-                    b.Property<int?>("AddressID");
-
-                    b.Property<int?>("staffID");
-
-                    b.HasKey("staffAdrressID", "staffIdentID");
+                    b.HasKey("staffID", "AddressID");
 
                     b.HasIndex("AddressID");
-
-                    b.HasIndex("staffID");
 
                     b.ToTable("tbl_StaffAddress");
                 });
@@ -502,7 +494,7 @@ namespace Rapidlaunch.Migrations
 
                     b.Property<int>("staffID");
 
-                    b.Property<int>("rocketTypeID");
+                    b.Property<int?>("rocketTypeID");
 
                     b.HasKey("safetyRatingID", "staffID");
 
@@ -589,7 +581,7 @@ namespace Rapidlaunch.Migrations
 
                     b.HasOne("Rapidlaunch.Models.ProviderAddress")
                         .WithMany("Launches")
-                        .HasForeignKey("ProviderAddressproviderID", "ProviderAddressaddressIdentID");
+                        .HasForeignKey("ProviderAddressProviderID", "ProviderAddressAddressID");
                 });
 
             modelBuilder.Entity("Rapidlaunch.Models.LaunchStaffSchedule", b =>
@@ -609,11 +601,12 @@ namespace Rapidlaunch.Migrations
                 {
                     b.HasOne("Rapidlaunch.Models.Address", "Address")
                         .WithMany("ProviderAddresses")
-                        .HasForeignKey("AddressID");
+                        .HasForeignKey("AddressID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Rapidlaunch.Models.Provider", "Provider")
                         .WithMany("ProviderAddresses")
-                        .HasForeignKey("providerID")
+                        .HasForeignKey("ProviderID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -651,26 +644,27 @@ namespace Rapidlaunch.Migrations
                 {
                     b.HasOne("Rapidlaunch.Models.Address", "Address")
                         .WithMany("StaffAddresses")
-                        .HasForeignKey("AddressID");
+                        .HasForeignKey("AddressID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Rapidlaunch.Models.Staff", "staff")
                         .WithMany("StaffAddresses")
-                        .HasForeignKey("staffID");
+                        .HasForeignKey("staffID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Rapidlaunch.Models.StaffSafetyRecord", b =>
                 {
-                    b.HasOne("Rapidlaunch.Models.RocketType", "rocketType")
+                    b.HasOne("Rapidlaunch.Models.RocketType")
                         .WithMany("staffSafetyRecords")
-                        .HasForeignKey("rocketTypeID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("rocketTypeID");
 
                     b.HasOne("Rapidlaunch.Models.SafetyRating", "SafetyRating")
                         .WithMany("StaffSafetyRecords")
                         .HasForeignKey("safetyRatingID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Rapidlaunch.Models.Staff")
+                    b.HasOne("Rapidlaunch.Models.Staff", "Staff")
                         .WithMany("StaffSafetyRecords")
                         .HasForeignKey("staffID")
                         .OnDelete(DeleteBehavior.Cascade);

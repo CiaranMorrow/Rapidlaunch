@@ -22,7 +22,8 @@ namespace Rapidlaunch.Controllers
         // GET: StaffAddresses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.StaffAddresses.ToListAsync());
+            var applicationDbContext = _context.StaffAddresses.Include(s => s.Address).Include(s => s.staff);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: StaffAddresses/Details/5
@@ -34,7 +35,9 @@ namespace Rapidlaunch.Controllers
             }
 
             var staffAddress = await _context.StaffAddresses
-                .FirstOrDefaultAsync(m => m.staffAdrressID == id);
+                .Include(s => s.Address)
+                .Include(s => s.staff)
+                .FirstOrDefaultAsync(m => m.staffID == id);
             if (staffAddress == null)
             {
                 return NotFound();
@@ -46,6 +49,8 @@ namespace Rapidlaunch.Controllers
         // GET: StaffAddresses/Create
         public IActionResult Create()
         {
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID");
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace Rapidlaunch.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("staffAdrressID,staffIdentID")] StaffAddress staffAddress)
+        public async Task<IActionResult> Create([Bind("staffID,AddressID")] StaffAddress staffAddress)
         {
             if (ModelState.IsValid)
             {
@@ -62,22 +67,26 @@ namespace Rapidlaunch.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID", staffAddress.AddressID);
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID", staffAddress.staffID);
             return View(staffAddress);
         }
 
         // GET: StaffAddresses/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var staffAddress = await _context.StaffAddresses.FindAsync(id);
+            var staffAddress = await _context.StaffAddresses.FindAsync(id, id2);
             if (staffAddress == null)
             {
                 return NotFound();
             }
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID", staffAddress.AddressID);
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID", staffAddress.staffID);
             return View(staffAddress);
         }
 
@@ -86,9 +95,9 @@ namespace Rapidlaunch.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("staffAdrressID,staffIdentID")] StaffAddress staffAddress)
+        public async Task<IActionResult> Edit(int id, [Bind("staffID,AddressID")] StaffAddress staffAddress)
         {
-            if (id != staffAddress.staffAdrressID)
+            if (id != staffAddress.staffID)
             {
                 return NotFound();
             }
@@ -102,7 +111,7 @@ namespace Rapidlaunch.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StaffAddressExists(staffAddress.staffAdrressID))
+                    if (!StaffAddressExists(staffAddress.staffID))
                     {
                         return NotFound();
                     }
@@ -113,19 +122,23 @@ namespace Rapidlaunch.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AddressID"] = new SelectList(_context.Addresses, "AddressID", "AddressID", staffAddress.AddressID);
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID", staffAddress.staffID);
             return View(staffAddress);
         }
 
         // GET: StaffAddresses/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
             var staffAddress = await _context.StaffAddresses
-                .FirstOrDefaultAsync(m => m.staffAdrressID == id);
+                .Include(s => s.Address)
+                .Include(s => s.staff)
+                .FirstOrDefaultAsync(m => m.AddressID == id && m.staffID == id2);
             if (staffAddress == null)
             {
                 return NotFound();
@@ -137,9 +150,9 @@ namespace Rapidlaunch.Controllers
         // POST: StaffAddresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id, int? id2)
         {
-            var staffAddress = await _context.StaffAddresses.FindAsync(id);
+            var staffAddress = await _context.StaffAddresses.FindAsync( id2, id );
             _context.StaffAddresses.Remove(staffAddress);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +160,7 @@ namespace Rapidlaunch.Controllers
 
         private bool StaffAddressExists(int id)
         {
-            return _context.StaffAddresses.Any(e => e.staffAdrressID == id);
+            return _context.StaffAddresses.Any(e => e.staffID == id);
         }
     }
 }

@@ -11,12 +11,34 @@
     <h4>StaffAddress</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address.AddressID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.staff)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.staff.staffID)
+        </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="staffAdrressID" />
-        <input type="hidden" asp-for="staffIdentID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+
+    <!--form asp-action="Delete">
+         <input type="hidden" asp-for="staffID" />
+         <input type="hidden" asp-for="AddressID" />
+         <input type="submit" value="Delete" class="btn btn-danger" /> |
+         <a asp-action="Index">Back to List</a>
+     </form> -->
+
+    @using (Html.BeginForm(null, null, new { id = Model.AddressID, id2 = Model.staffID }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-action no-color">
+            <input type="submit" value="Delete" class="btn-danger" />
+            @Html.ActionLink("Back to List", "Index")
+
+        </div>
+  
+}

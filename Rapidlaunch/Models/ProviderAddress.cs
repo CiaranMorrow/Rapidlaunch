@@ -7,11 +7,11 @@ namespace Rapidlaunch.Models
 {
     public class ProviderAddress
     {
-       public int  providerID { get; set; }
-        public int addressIdentID { get; set; }
-
-        public Address Address { get; set; }
+       public int  ProviderID { get; set; }
+        public int AddressID { get; set; }
+       
         public Provider Provider { get; set; }
+        public Address Address { get; set; }
 
         public ICollection<Launch  > Launches    { get; set; }
 

@@ -1,49 +1,63 @@
-﻿@model IEnumerable<Rapidlaunch.Models.LaunchStaffSchedule>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<Rapidlaunch.Models.LaunchStaffSchedule>
 
 @{
     ViewData["Title"] = "Index";
 }
+@if (SignInManager.IsSignedIn(User))
+{
+    <h1>Index</h1>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.staff)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Launch)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.staff.staffID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Launch.LaunchID)
-            </td>
-            <td class="tester-editor">
-                <div class="dropdownIndex">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                        Data Option
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <a asp-action="Edit" asp-route-id="@item.LaunchStaffScheduleID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.LaunchStaffScheduleID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.LaunchStaffScheduleID">Delete</a>
-                    </ul>
-                </div>
-            </td>
-        </tr>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.staff)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Launch)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.staff.staffID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Launch.LaunchID)
+                    </td>
+                    <td class="tester-editor">
+                        <div class="dropdownIndex">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Data Option
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <a asp-action="Edit" asp-route-id="@item.LaunchStaffScheduleID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.LaunchStaffScheduleID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.LaunchStaffScheduleID">Delete</a>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>You are not authorised to view this content - <br />Please log in.</h2>
+                <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
+        </div>
+     </div>
+}

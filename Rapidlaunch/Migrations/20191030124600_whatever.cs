@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Rapidlaunch.Migrations
 {
-    public partial class db1 : Migration
+    public partial class whatever : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -379,22 +379,21 @@ namespace Rapidlaunch.Migrations
                 name: "ProviderAddresses",
                 columns: table => new
                 {
-                    providerID = table.Column<int>(nullable: false),
-                    addressIdentID = table.Column<int>(nullable: false),
-                    AddressID = table.Column<int>(nullable: true)
+                    ProviderID = table.Column<int>(nullable: false),
+                    AddressID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProviderAddresses", x => new { x.providerID, x.addressIdentID });
+                    table.PrimaryKey("PK_ProviderAddresses", x => new { x.ProviderID, x.AddressID });
                     table.ForeignKey(
                         name: "FK_ProviderAddresses_tbl_Addresses_AddressID",
                         column: x => x.AddressID,
                         principalTable: "tbl_Addresses",
                         principalColumn: "AddressID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProviderAddresses_tbl_Provider_providerID",
-                        column: x => x.providerID,
+                        name: "FK_ProviderAddresses_tbl_Provider_ProviderID",
+                        column: x => x.ProviderID,
                         principalTable: "tbl_Provider",
                         principalColumn: "ProviderID",
                         onDelete: ReferentialAction.Cascade);
@@ -404,26 +403,24 @@ namespace Rapidlaunch.Migrations
                 name: "tbl_StaffAddress",
                 columns: table => new
                 {
-                    staffAdrressID = table.Column<int>(nullable: false),
-                    staffIdentID = table.Column<int>(nullable: false),
-                    AddressID = table.Column<int>(nullable: true),
-                    staffID = table.Column<int>(nullable: true)
+                    staffID = table.Column<int>(nullable: false),
+                    AddressID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tbl_StaffAddress", x => new { x.staffAdrressID, x.staffIdentID });
+                    table.PrimaryKey("PK_tbl_StaffAddress", x => new { x.staffID, x.AddressID });
                     table.ForeignKey(
                         name: "FK_tbl_StaffAddress_tbl_Addresses_AddressID",
                         column: x => x.AddressID,
                         principalTable: "tbl_Addresses",
                         principalColumn: "AddressID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tbl_StaffAddress_tbl_Staffs_staffID",
                         column: x => x.staffID,
                         principalTable: "tbl_Staffs",
                         principalColumn: "staffID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -432,7 +429,7 @@ namespace Rapidlaunch.Migrations
                 {
                     staffID = table.Column<int>(nullable: false),
                     safetyRatingID = table.Column<int>(nullable: false),
-                    rocketTypeID = table.Column<int>(nullable: false)
+                    rocketTypeID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -442,7 +439,7 @@ namespace Rapidlaunch.Migrations
                         column: x => x.rocketTypeID,
                         principalTable: "tbl_RocketTypes",
                         principalColumn: "rocketTypeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_tbl_StaffSafetyRecords_tbl_SafetyRatings_safetyRatingID",
                         column: x => x.safetyRatingID,
@@ -471,8 +468,8 @@ namespace Rapidlaunch.Migrations
                     ProviderID = table.Column<int>(nullable: true),
                     PadStatusID = table.Column<int>(nullable: true),
                     RocketID = table.Column<int>(nullable: true),
-                    ProviderAddressaddressIdentID = table.Column<int>(nullable: true),
-                    ProviderAddressproviderID = table.Column<int>(nullable: true)
+                    ProviderAddressAddressID = table.Column<int>(nullable: true),
+                    ProviderAddressProviderID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -496,10 +493,10 @@ namespace Rapidlaunch.Migrations
                         principalColumn: "RocketID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_tbl_Launches_ProviderAddresses_ProviderAddressproviderID_ProviderAddressaddressIdentID",
-                        columns: x => new { x.ProviderAddressproviderID, x.ProviderAddressaddressIdentID },
+                        name: "FK_tbl_Launches_ProviderAddresses_ProviderAddressProviderID_ProviderAddressAddressID",
+                        columns: x => new { x.ProviderAddressProviderID, x.ProviderAddressAddressID },
                         principalTable: "ProviderAddresses",
-                        principalColumns: new[] { "providerID", "addressIdentID" },
+                        principalColumns: new[] { "ProviderID", "AddressID" },
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -599,9 +596,9 @@ namespace Rapidlaunch.Migrations
                 column: "RocketID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_Launches_ProviderAddressproviderID_ProviderAddressaddressIdentID",
+                name: "IX_tbl_Launches_ProviderAddressProviderID_ProviderAddressAddressID",
                 table: "tbl_Launches",
-                columns: new[] { "ProviderAddressproviderID", "ProviderAddressaddressIdentID" });
+                columns: new[] { "ProviderAddressProviderID", "ProviderAddressAddressID" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_LaunchStaffSchedule_launchID",
@@ -632,11 +629,6 @@ namespace Rapidlaunch.Migrations
                 name: "IX_tbl_StaffAddress_AddressID",
                 table: "tbl_StaffAddress",
                 column: "AddressID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tbl_StaffAddress_staffID",
-                table: "tbl_StaffAddress",
-                column: "staffID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_Staffs_ITAccountID",

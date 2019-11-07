@@ -22,7 +22,7 @@ namespace Rapidlaunch.Controllers
         // GET: StaffSafetyRecords
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.StaffSafetyRecords.Include(s => s.SafetyRating).Include(s => s.rocketType);
+            var applicationDbContext = _context.StaffSafetyRecords.Include(s => s.SafetyRating).Include(s => s.Staff);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,7 +36,7 @@ namespace Rapidlaunch.Controllers
 
             var staffSafetyRecord = await _context.StaffSafetyRecords
                 .Include(s => s.SafetyRating)
-                .Include(s => s.rocketType)
+                .Include(s => s.Staff)
                 .FirstOrDefaultAsync(m => m.safetyRatingID == id);
             if (staffSafetyRecord == null)
             {
@@ -49,9 +49,8 @@ namespace Rapidlaunch.Controllers
         // GET: StaffSafetyRecords/Create
         public IActionResult Create()
         {
-            ViewData["staffID"] = new SelectList(_context.SafetyRatings, "staffID", "staffID");
             ViewData["safetyRatingID"] = new SelectList(_context.SafetyRatings, "safetyRatingID", "safetyRatingID");
-            ViewData["rocketTypeID"] = new SelectList(_context.RocketTypes, "rocketTypeID", "rocketTypeID");
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID");
             return View();
         }
 
@@ -60,7 +59,7 @@ namespace Rapidlaunch.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("staffID,safetyRatingID,rocketTypeID")] StaffSafetyRecord staffSafetyRecord)
+        public async Task<IActionResult> Create([Bind("staffID,safetyRatingID")] StaffSafetyRecord staffSafetyRecord)
         {
             if (ModelState.IsValid)
             {
@@ -69,25 +68,25 @@ namespace Rapidlaunch.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["safetyRatingID"] = new SelectList(_context.SafetyRatings, "safetyRatingID", "safetyRatingID", staffSafetyRecord.safetyRatingID);
-            ViewData["rocketTypeID"] = new SelectList(_context.RocketTypes, "rocketTypeID", "rocketTypeID", staffSafetyRecord.rocketTypeID);
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID", staffSafetyRecord.staffID);
             return View(staffSafetyRecord);
         }
 
         // GET: StaffSafetyRecords/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id , int? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var staffSafetyRecord = await _context.StaffSafetyRecords.FindAsync(id);
-            if (staffSafetyRecord == null)
+            var staffSafetyRecord = await _context.StaffSafetyRecords.FindAsync(id, id2);
+            if (staffSafetyRecord == null )
             {
                 return NotFound();
             }
             ViewData["safetyRatingID"] = new SelectList(_context.SafetyRatings, "safetyRatingID", "safetyRatingID", staffSafetyRecord.safetyRatingID);
-            ViewData["rocketTypeID"] = new SelectList(_context.RocketTypes, "rocketTypeID", "rocketTypeID", staffSafetyRecord.rocketTypeID);
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID", staffSafetyRecord.staffID);
             return View(staffSafetyRecord);
         }
 
@@ -96,7 +95,7 @@ namespace Rapidlaunch.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("staffID,safetyRatingID,rocketTypeID")] StaffSafetyRecord staffSafetyRecord)
+        public async Task<IActionResult> Edit(int id, [Bind("staffID,safetyRatingID")] StaffSafetyRecord staffSafetyRecord)
         {
             if (id != staffSafetyRecord.safetyRatingID)
             {
@@ -124,22 +123,22 @@ namespace Rapidlaunch.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["safetyRatingID"] = new SelectList(_context.SafetyRatings, "safetyRatingID", "safetyRatingID", staffSafetyRecord.safetyRatingID);
-            ViewData["rocketTypeID"] = new SelectList(_context.RocketTypes, "rocketTypeID", "rocketTypeID", staffSafetyRecord.rocketTypeID);
+            ViewData["staffID"] = new SelectList(_context.Staffs, "staffID", "staffID", staffSafetyRecord.staffID);
             return View(staffSafetyRecord);
         }
 
         // GET: StaffSafetyRecords/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
 
             var staffSafetyRecord = await _context.StaffSafetyRecords
                 .Include(s => s.SafetyRating)
-                .Include(s => s.rocketType)
-                .FirstOrDefaultAsync(m => m.safetyRatingID == id);
+                .Include(s => s.Staff)
+                .FirstOrDefaultAsync(m => m.safetyRatingID == id && m.staffID == id2);
             if (staffSafetyRecord == null)
             {
                 return NotFound();
@@ -151,9 +150,9 @@ namespace Rapidlaunch.Controllers
         // POST: StaffSafetyRecords/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id, int? id2)
         {
-            var staffSafetyRecord = await _context.StaffSafetyRecords.FindAsync(id);
+            var staffSafetyRecord = await _context.StaffSafetyRecords.FindAsync(id, id2);
             _context.StaffSafetyRecords.Remove(staffSafetyRecord);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

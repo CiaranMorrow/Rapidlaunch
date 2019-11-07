@@ -7,8 +7,8 @@ namespace Rapidlaunch.Models
 {
     public class StaffAddress
     {
-        public int staffAdrressID { get; set; }
-        public int staffIdentID { get; set; }
+        public int staffID { get; set; }
+        public int AddressID { get; set; }
 
         public Address Address { get; set; }
         public Staff staff { get; set; }
