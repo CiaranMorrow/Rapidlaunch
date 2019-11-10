@@ -12,7 +12,14 @@ namespace Rapidlaunch.Controllers
 {
     public class StaffsController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StaffsController"/> class
+        /// </summary>
+        /// <param name="context">The context.</param>
 
         public StaffsController(ApplicationDbContext context)
         {
@@ -21,7 +28,7 @@ namespace Rapidlaunch.Controllers
 
         // GET: Staffs
         /// <summary>
-        /// 
+        /// Indexes this instance
         /// </summary>
         public async Task<IActionResult> Index()
         {
@@ -29,6 +36,10 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Staffs/Details/5
+        /// <summary>
+        /// Details the specified identifier
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +58,9 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Staffs/Create
+        /// <summary>
+        /// Creates this instance
+        /// </summary>
         public IActionResult Create()
         {
             return View();
@@ -55,6 +69,10 @@ namespace Rapidlaunch.Controllers
         // POST: Staffs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates the Staff record as specified by the user.
+        /// </summary>
+        /// <param name="staff">The staff </param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("staffID,roleIdentID,staffTel,firstNameIdent,lastNameIdent,staffEmail,itAccountIdentID")] Staff staff)
@@ -69,6 +87,10 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Staffs/Edit/5
+        /// <summary>
+        /// Edits the specified identifier
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,6 +109,12 @@ namespace Rapidlaunch.Controllers
         // POST: Staffs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="staff">The staff.</param>
+        /// dpesnt return anything
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("staffID,roleIdentID,staffTel,firstNameIdent,lastNameIdent,staffEmail,itAccountIdentID")] Staff staff)
@@ -120,6 +148,10 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Staffs/Delete/5
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -138,6 +170,10 @@ namespace Rapidlaunch.Controllers
         }
 
         // POST: Staffs/Delete/5
+        /// <summary>
+        /// Confirms the deletion of a staff
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -147,6 +183,9 @@ namespace Rapidlaunch.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        /// Checks if the staff already exists
+        /// </summary>
+        /// <param name="id">The staff </param>
 
         private bool StaffExists(int id)
         {

@@ -19,9 +19,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-light box-shadows ">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar border-light box-shadows ">
             <div class="container-fluid ">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/Assets/RapidLaunchTester.PNG" , height="60" width="220 " /> </a>
+                <a class="navbar-brand" asp-area="" asp-controller="HomePage" asp-action="Index"> <img src="~/Assets/RapidLaunchTester.PNG" , height="60" width="220 " /> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -79,14 +79,14 @@
                                 <a class="dropdown-item" asp-area="" asp-controller="ITAccounts" asp-action="Index">IT Accounts</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="ITAccountTypes" asp-action="Index">IT Account Types</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Addresses" asp-action="Index">Recognised Addresses</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="ITAccounts" asp-action="Index">Recognised Countries</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Countries" asp-action="Index">Recognised Countries</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="" asp-controller="MiscellaneousHomePage" asp-action="Index">Misc Home Page </a>
                             </div>
                         </li>
                     </ul>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="HomePage" asp-action="Index">Home</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="HomePage" asp-action="Index">Dashboard</a>
                 </div>
             </div>
         </nav>
@@ -99,8 +99,8 @@
     </div>
   
 
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid ">
+    <footer class="border-top footer text-muted container-padded:100px bg-dark">
+        <div class="container-fluid " style="text-align:center; color:white "> <!-- aligning the footer in the middle of the page-->
             <!-- container fluid -->
             Rapid Launch Ltd &copy; 2019 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>    

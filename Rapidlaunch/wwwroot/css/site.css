@@ -34,6 +34,7 @@ button.accept-policy {
   line-height: inherit;
 }
 
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -73,7 +74,7 @@ h1 {
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
-    color: red;
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     text-align: center;
@@ -83,7 +84,7 @@ thead {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    background-color: purple;
+    background-color: navajowhite;
     align-self:baseline;
     text-align:center;
     
@@ -109,7 +110,7 @@ tr:hover {
 }
 body {
 
-    background-image: url('../assets/wallpaper.jpg');
+    background-color:floralwhite; 
 }
 
 .formcenter {
