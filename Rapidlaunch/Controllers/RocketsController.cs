@@ -1,36 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rapidlaunch.Data;
 using Rapidlaunch.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Rapidlaunch.Controllers
 {
     public class RocketsController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RocketsController"/> class
+        /// </summary>
+        /// <param name="context">The context.</param>
         public RocketsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         // GET: Rockets
+        /// <summary>
+        /// Indexes this instance
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             return View(await _context.Rockets.ToListAsync());
         }
 
         // GET: Rockets/Details/5
+        /// <summary>
+        /// Details the specified identifier
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound(); // Throws a not found if id or details is empty 
             }
 
             var rocket = await _context.Rockets
@@ -44,6 +55,9 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Rockets/Create
+        /// <summary>
+        /// Creates this instance
+        /// </summary>
         public IActionResult Create()
         {
             return View();
@@ -52,6 +66,10 @@ namespace Rapidlaunch.Controllers
         // POST: Rockets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates the rocket record as specified by the user.
+        /// </summary>
+        /// <param name="rocket">The rocket.</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RocketID,rocketName,rocketypeID")] Rocket rocket)
@@ -66,6 +84,12 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Rockets/Edit/5
+
+        /// <summary>
+        /// Edits the specified identifier
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,6 +108,12 @@ namespace Rapidlaunch.Controllers
         // POST: Rockets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="rocket">The rocket.</param>
+        /// dpesnt return anything
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RocketID,rocketName,rocketypeID")] Rocket rocket)
@@ -117,6 +147,10 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Rockets/Delete/5
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +169,10 @@ namespace Rapidlaunch.Controllers
         }
 
         // POST: Rockets/Delete/5
+        /// <summary>
+        /// Confirms the deletion of a rocket
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -145,6 +183,10 @@ namespace Rapidlaunch.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Checks if the rocket already exists
+        /// </summary>
+        /// <param name="id">The rockets </param>
         private bool RocketExists(int id)
         {
             return _context.Rockets.Any(e => e.RocketID == id);

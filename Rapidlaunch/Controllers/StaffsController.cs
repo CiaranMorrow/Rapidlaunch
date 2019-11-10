@@ -20,6 +20,9 @@ namespace Rapidlaunch.Controllers
         }
 
         // GET: Staffs
+        /// <summary>
+        /// 
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             return View(await _context.Staffs.ToListAsync());

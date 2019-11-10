@@ -12,7 +12,13 @@ namespace Rapidlaunch.Controllers
 {
     public class ProviderAddressesController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ITAccountsController"/> class
+        /// </summary>
 
         public ProviderAddressesController(ApplicationDbContext context)
         {
