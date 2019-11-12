@@ -163,10 +163,12 @@ namespace Rapidlaunch.Controllers
                 .FirstOrDefaultAsync(m => m.LaunchID == id);
             if (launch == null)
             {
-                return NotFound();
+                return NotFound(); // checks if file is in db
             }
 
             return View(launch);
+
+
         }
 
         // POST: Launches/Delete/5

@@ -5,6 +5,8 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  border-color:black;
+
 }
 
 /* Sticky footer styles
@@ -43,7 +45,7 @@ html {
 }
 
 body {
-   Margin bottom by footer height 
+   
   margin-bottom: 60px;
 }
 .footer {
@@ -152,12 +154,16 @@ body {
         background-color: transparent;
         border-radius: 100px;
         border-color: transparent;
+        text-align:center;
     }
 .navbar-brand{
     background-color:transparent;
 }
 .card-columns card card-body card-title h5 {
     align-content: center;
+}
+.card-columns card card-body card-title container-fluid {
+    text-align:center;
 }
 .card-title{
     text-align:center;
@@ -170,4 +176,42 @@ body {
 .container-padded {
     position: relative;
     top: 75px;
+}
+.btn btn-danger {
+    align-content: center;
+}
+
+.container-fluid h4 {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+
+}
+.container-fluid h3 {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+    .row {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+.btn btn-danger{
+    align-content:center;
+    align-items:center;
+    align-self:center;
+    text-align:center;
+}
+#testicle{
+    align-content:center;
+    position:center;
+    width:30%;
+    margin:auto;
+
+
+}
+.navbar-toggler button {
+    color: black
 }

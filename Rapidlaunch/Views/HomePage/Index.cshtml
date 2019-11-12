@@ -8,7 +8,7 @@
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    <h1> Home </h1>
+    <h1> Welcome Home @User.Identity.Name! </h1> <!-- Personalised home page -->
     <div class="card-columns">
         <div class="card">
             <p>  </p>
@@ -44,8 +44,7 @@
                                         <script>
                                             !function (d, s, id) {
                                                 var js, fjs = d.getElementsByTagName(s)[0];
-                                                if (!d.getElementById(id))
-                                                {
+                                                if (!d.getElementById(id)) {
                                                     js = d.createElement(s);
                                                     js.id = id;
                                                     js.src = 'https://weatherwidget.io/js/widget.min.js';
@@ -149,6 +148,11 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
         <div class="card">
             <p>  </p>
             <div style="width:100%; text-align:center">
@@ -166,14 +170,10 @@
             </div>
         </div>
         <div class="card bg-primary text-white text-center p-3 ">
-            <blockquote class="blockquote mb-0">
-                <p>Log out? </p>
-                <footer class="blockquote-footer">
-                    <small>
-                        Someone famous in <cite title="Source Title">Source Title</cite>
-                    </small>
-                </footer>
-            </blockquote>
+
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-white align-content-center">Logout</button> <!-- Sign out button -->
+            </form>
         </div>
         <div class="card ">
             <div style="width:100%; text-align:center">
@@ -198,11 +198,15 @@
                 <a class="card-img-top" asp-area="" asp-controller="ProviderHomePage" asp-action="Index"> <img src="~/Assets/Provider.png" class="rounded" , height="200" width="280" style="text-align:center" /></a>
             </div>
             <div class="card-body">
-                <h5 class="card-title"><a asp-area="" asp-controller="ProviderHomePage" asp-action="Index"> Provider </a></h5>
+                <h5 class="card-title"><a asp-area="" asp-controller="ProviderHomePage"
+                                          asp-action="Index"> Provider </a></h5>
                 <p class="card-text">
                     <div class="container-fluid">
-                        <a asp-area="" asp-controller="Providers" asp-action="Index"> Providers</a> l <a asp-area="" asp-controller="ProviderContacts" asp-action="Index"> Contacts</a> l
-                        <a asp-area="" asp-controller="ProviderAddresses" asp-action="Index"> Addresses</a>
+                        <a asp-area="" asp-controller="Providers" asp-action="Index">
+                        Providers</a> l <a asp-area="" asp-controller="ProviderContacts" 
+                                           asp-action="Index"> Contacts</a> l
+                        <a asp-area="" asp-controller="ProviderAddresses" 
+                                            asp-action="Index"> Addresses</a>
                     </div>
                 </p>
             </div>
@@ -224,13 +228,26 @@
             </div>
         </div>
     </div>
-
+    <div class="card">
+        <p>  </p>
+        <div class="card-body">
+            <h5 class="card-title"><a asp-area="" asp-controller="Home Page" asp-action=""> Rapid Launch HQ  </a></h5>
+            <p class="card-text">
+                <div class="container-fluid">
+                    <!-- Embedded API for Google maps with declared size-->
+                    <iframe width="600" height="450" frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/search?q=Kennedy%20Space%20Center%2C%20Florida%2C%20USA&key=AIzaSyCAIdHM-ODpXbiVNFlDFJvoF5VtiKcG3y8"
+                            allowfullscreen></iframe>
+                </div>
+            </p>
+        </div>
+    </div>
 }
 else
 {
     <div class="row">
         <div class="col-md-4">
-            <h2>You are not authorised to view this content - <br />Please log in.</h2>
+            <h1>You are not authorised to view this content - <br />Please log in.</h1>
             <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
         </div>
     </div>

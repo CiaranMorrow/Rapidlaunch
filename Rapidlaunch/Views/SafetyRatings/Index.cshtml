@@ -8,9 +8,10 @@
     ViewData["Title"] = "Index";
 }
 <link href="~/css/site.css" rel="stylesheet" />
+<!-- checks if user is signed in -->
 @if (SignInManager.IsSignedIn(User))
 {
-    <h1>Index</h1>
+    <h1>Safety Ratings</h1>
 
     <p>
         <a asp-action="Create">Create New</a>
@@ -54,7 +55,7 @@ else
 {
     <div class="row">
         <div class="col-md-4">
-            <h2>You are not authorised to view this content - <br />Please log in.</h2>
+            <h1>You are not authorised to view this content - <br />Please log in.</h1>
             <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
         </div>
     </div>

@@ -5,82 +5,83 @@
 @{
     ViewData["Title"] = "Index";
 }
+<!-- checks if user is signed in -->
 @if (SignInManager.IsSignedIn(User))
 {
-<h1>Staff Data</h1>
+    <h1>Staff Data</h1>
     <p>
         <a asp-action="Create">Create New</a>
     </p>
-        <table class="table">
-            <caption>List of Staff</caption>
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.roleIdentID)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.staffTel)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.firstNameIdent)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.lastNameIdent)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.staffEmail)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.itAccountIdentID)
-                        </th>
-                        <th></th>
-                    </tr>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.roleIdentID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.staffTel)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.firstNameIdent)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.lastNameIdent)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.staffEmail)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.itAccountIdentID)
-                            </td>
-                            <td class="tester-editor">
-                                <div class="dropdownIndex">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                        Data Option
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <a asp-action="Edit" asp-route-id="@item.staffID">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.staffID">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.staffID">Delete</a>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-        </table> 
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-4">
-                <h2>You are not authorised to view this content - <br />Please log in.</h2>
-                <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
-            </div>
+    <table class="table">
+        <caption>List of Staff</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.roleIdentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.staffTel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.firstNameIdent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lastNameIdent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.staffEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.itAccountIdentID)
+                </th>
+                <th></th>
+            </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roleIdentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.staffTel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstNameIdent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastNameIdent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.staffEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.itAccountIdentID)
+                    </td>
+                    <td class="tester-editor">
+                        <div class="dropdownIndex">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Data Option
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <a asp-action="Edit" asp-route-id="@item.staffID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.staffID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.staffID">Delete</a>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h1>You are not authorised to view this content - <br />Please log in.</h1>
+            <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
         </div>
-    }
+    </div>
+}

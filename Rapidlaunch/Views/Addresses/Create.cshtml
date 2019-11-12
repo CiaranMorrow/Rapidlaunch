@@ -6,42 +6,45 @@
 
 <h1>Create New Safety Rating </h1>
 
-<h4>Address</h4> <!-- Taking Heading style fromm CSS H4 -->
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create"><!-- names the ASP action-->
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="addressLine1" class="control-label"></label>
-                <input asp-for="addressLine1" class="form-control" />
-                <span asp-validation-for="addressLine1" class="text-danger"></span>
-            </div>
-         <div class="form-group">
-                <label asp-for="addressLine2" class="control-label"></label>
-                <input asp-for="addressLine2" class="form-control" />
-                <span asp-validation-for="addressLine2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="addressLine3" class="control-label"></label>
-                <input asp-for="addressLine3" class="form-control" />
-                <span asp-validation-for="addressLine3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="countryID" class="control-label"></label>
-                <select asp-for="countryID" class="form-control" asp-items="ViewBag.countryID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="postCode" class="control-label"></label>
-                <input asp-for="postCode" class="form-control" />
-                <span asp-validation-for="postCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="containter"> 
+    <div class="row justify-content-md-center"> <!-- Centering the Row -->
+        <h4>Address</h4> <!-- Taking Heading style fromm CSS H4 -->
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <!-- names the ASP action-->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="addressLine1" class="control-label"></label>
+                    <input asp-for="addressLine1" class="form-control" />
+                    <span asp-validation-for="addressLine1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="addressLine2" class="control-label"></label>
+                    <input asp-for="addressLine2" class="form-control" />
+                    <span asp-validation-for="addressLine2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="addressLine3" class="control-label"></label>
+                    <input asp-for="addressLine3" class="form-control" />
+                    <span asp-validation-for="addressLine3" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="countryID" class="control-label"></label>
+                    <select asp-for="countryID" class="form-control" asp-items="ViewBag.countryID"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="postCode" class="control-label"></label>
+                    <input asp-for="postCode" class="form-control" />
+                    <span asp-validation-for="postCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+    </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
