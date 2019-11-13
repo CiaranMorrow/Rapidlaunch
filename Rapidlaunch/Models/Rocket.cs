@@ -39,7 +39,7 @@ namespace Rapidlaunch.Models
         /// The type of the rocket
         /// </value>
         public RocketType RocketType { get; set; }
-                               /// <summary>
+         /// <summary>
         /// Gets or sets the launches
         /// </summary>
         /// <value>

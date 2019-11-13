@@ -7,16 +7,16 @@ namespace Rapidlaunch.Models
 {
     public class Launch
     {
-        public int  LaunchID { get; set; }
-        public int providerIdent { get; set; }
-        public DateTime launchDate { get; set; }
-        public string launchName { get; set; }
-        public string padStatusIdenet { get; set; }
-        public string rocketIdentID { get; set; }
+        public int  LaunchID { get; set; } // Primary Key
+        public int providerIdent { get; set; }  // access modifier PUBLIC  - integer is the data type  / get and set mutators
+        public DateTime launchDate { get; set; } //   // access modifier PUBLIC  - datetime is the data type  / get and set mutators
+        public string launchName { get; set; } // access modifier PUBLIC  - String is the data type  / get and set mutators
+        public string padStatusIdenet { get; set; } // access modifier PUBLIC  - String is the data type  / get and set mutators
+        public string rocketIdentID { get; set; } // access modifier PUBLIC  - String is the data type  / get and set mutators
 
-        public Provider Provider { get; set; }
+        public Provider Provider { get; set; } // this is the foreign key in the table and it originates from provider relation 
         
-        public ICollection<LaunchStaffSchedule> LaunchStaffSchedules { get; set; }
+        public ICollection<LaunchStaffSchedule> LaunchStaffSchedules { get; set; } // this 
         public PadStatus PadStatus { get; set; }
         public Rocket rocket { get; set; }
 

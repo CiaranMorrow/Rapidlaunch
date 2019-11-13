@@ -7,10 +7,10 @@ namespace Rapidlaunch.Models
 {
     public class ITAccountType
     {
-        public int itAccountTypeID { get; set; }
-        public int authorisationLevel { get; set; }
+        public int itAccountTypeID { get; set; } //PK
+        public int authorisationLevel { get; set; } // atribute 
 
-        public ICollection<ITAccount> ITAccounts{ get; set; }
+        public ICollection<ITAccount> ITAccounts{ get; set; }  // used as a functional key elsewhere in  IT ACCounts 
 
 
     }

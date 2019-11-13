@@ -11,23 +11,25 @@
 <div class="row  justify-content-md-center">
     <!-- Centering the Row -->
        <br>
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="itaccountTypeIdentID" class="control-label"></label>
-                <input asp-for="itaccountTypeIdentID" class="form-control" />
-                <span asp-validation-for="itaccountTypeIdentID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+       <div class="col-md-4">
+           <!-- sets up the alignment for the data to go -->
+           <form asp-action="Create">
+               <!-- form name -->
+               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+               <div class="form-group">
+                   <label asp-for="itaccountTypeIdentID" class="control-label"></label>
+                   <input asp-for="itaccountTypeIdentID" class="form-control" />
+                   <span asp-validation-for="itaccountTypeIdentID" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <input type="submit" value="Create" class="btn btn-primary" />
+               </div>
+           </form>
+       </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a> <!-- return navigatior -->
 </div>
 
 @section Scripts {

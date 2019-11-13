@@ -1,14 +1,15 @@
 ﻿@model Rapidlaunch.Models.Country
-
+<!-- uses the model from country -->
 @{
     ViewData["Title"] = "Edit";
+    <!-- title of the page - Efit -->
 }
 
-<h1>Edit</h1>
+<h1>Edit</h1> <!-- header taking styles from CSS -->
 
-<h4>Country</h4>
+<h4>Country</h4> <!-- heading type unanimous across H4 s-->
 <hr />
-<div class="row">
+<div class="row"> <!-- page alignment for the following -->
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -18,7 +19,7 @@
                 <input asp-for="countryName" class="form-control" />
                 <span asp-validation-for="countryName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group"> ><!-- button to save the changes -->
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -26,7 +27,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a> <!-- gives user the option to navigate -->
 </div>
 
 @section Scripts {

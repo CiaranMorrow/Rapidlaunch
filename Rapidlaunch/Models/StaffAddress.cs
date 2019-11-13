@@ -10,8 +10,8 @@ namespace Rapidlaunch.Models
         public int staffID { get; set; }
         public int AddressID { get; set; }
 
-        public Address Address { get; set; }
-        public Staff staff { get; set; }
+        public Address Address { get; set; }  // uses as the candidtate keys 
+        public Staff staff { get; set; }  // uses as the candidtate keys 
 
 
 

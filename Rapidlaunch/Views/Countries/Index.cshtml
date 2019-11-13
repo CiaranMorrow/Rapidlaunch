@@ -9,16 +9,18 @@
 <!-- checks if user is signed in -->
 @if (SignInManager.IsSignedIn(User))
 {
-    <h1>Countries </h1>
+    <h1>Countries </h1> <!-- heading taking teh style form the CSS -->
 
     <p>
         <a asp-action="Create">Create New</a>
     </p>
     <table class="table">
+        <!-- Creates a table fills out data -->
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.countryName)
+                    <!-- Gets country namefrom the db -->
+                    @Html.DisplayNameFor(model => model.countryName) 
                 </th>
                 <th></th>
             </tr>
@@ -28,17 +30,19 @@
             {
                 <tr>
                     <td>
+                        <!-- fills the data within the table for each line it tels it to print what it has on it -->
                         @Html.DisplayFor(modelItem => item.countryName)
                     <td class="tester-editor">
                         <div class="dropdownIndex">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> <!-- buttons for the options-->
                                 Data Option
+                                <!-- creates button with dropdown -->
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <a asp-action="Edit" asp-route-id="@item.CountryID">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.CountryID">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.CountryID">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@item.CountryID">Edit</a> | <!-- text that is hyperlinked to take to Country ID - Detail -->
+                                <a asp-action="Details" asp-route-id="@item.CountryID">Details</a> | <!-- text that is hyperlinked to take to Country ID - Detail -->
+                                <a asp-action="Delete" asp-route-id="@item.CountryID">Delete</a> <!-- text that is hyperlinked to take to Country ID - Detail -->
                             </ul>
                         </div>
 
@@ -49,10 +53,12 @@
 }
 else
 {
-    <div class="row">
+    <!-- ensuring theres a signeed in user using an if statement-->
+
+    <div class="row"> <!-- takes the sytle form the CSS -->
         <div class="col-md-4">
             <h1>You are not authorised to view this content - <br />Please log in.</h1>
-            <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
+            <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a> <!-- HYperlink to the logi n page  -->
         </div>
     </div>
 }

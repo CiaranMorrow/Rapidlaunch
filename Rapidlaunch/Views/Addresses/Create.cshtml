@@ -4,17 +4,17 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create New Safety Rating </h1>
+<h1>Create New Safety Rating </h1> <!-- style delcated in the CSS -->
 
 
 <div class="containter"> 
     <div class="row justify-content-md-center"> <!-- Centering the Row -->
         <h4>Address</h4> <!-- Taking Heading style fromm CSS H4 -->
-        <div class="col-md-4">
+        <div class="col-md-4"> <!-- sets up the alignment for the data to go -->
             <form asp-action="Create">
                 <!-- names the ASP action-->
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+                <div class="form-group"> <!-- -->
                     <label asp-for="addressLine1" class="control-label"></label>
                     <input asp-for="addressLine1" class="form-control" />
                     <span asp-validation-for="addressLine1" class="text-danger"></span>
@@ -39,7 +39,7 @@
                     <span asp-validation-for="postCode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                    <input type="submit" value="Create" class="btn btn-primary btn-block" /> <!-- button -->
                 </div>
             </form>
         </div>
@@ -47,7 +47,7 @@
     </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a> <!-- return navigatior -->
 </div>
 
 @section Scripts {

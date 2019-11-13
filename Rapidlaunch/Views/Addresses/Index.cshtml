@@ -73,12 +73,13 @@
         </tbody>
     </table>
 }
-else
+else 
 {
+    <!-- ensuring theres a signeed in user using an if statement-->
     <div class="row">
         <div class="col-md-4">
             <h1>You are not authorised to view this content - <br />Please log in.</h1>
-            <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a>
+            <br /><a class="btn btn-danger" asp-area="identity" asp-page="/Account/Login">Login</a> <!-- HYperlink -->
         </div>
     </div>
 }

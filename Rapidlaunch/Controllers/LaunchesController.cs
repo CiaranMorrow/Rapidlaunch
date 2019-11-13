@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Rapidlaunch.Data;
 using Rapidlaunch.Models;
-
+// shows you all the libraries used 
+// all located in the namespace controllers foler
 namespace Rapidlaunch.Controllers
 {
     public class LaunchesController : Controller
@@ -17,12 +18,12 @@ namespace Rapidlaunch.Controllers
         /// </summary>
         private readonly ApplicationDbContext _context;
         /// <summary>
-        /// Initializes a new instance of the <see cref="LaunchesController"/> class
+        /// Initializes a new instance of the class
         /// </summary>
 
         public LaunchesController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context; // database context of the application
         }
 
         // GET: Launches
@@ -31,26 +32,24 @@ namespace Rapidlaunch.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Launches.ToListAsync());
+            return View(await _context.Launches.ToListAsync()); // views the data within the Launches db and awaits its - so it doesnt get ahead of itself and show the user an empty db section 
         }
 
         // GET: Launches/Details/5
         /// <summary>
         /// Details the specified identifier
         /// </summary>
-        /// <param name="id">The Launches </param>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound(); // checks if there are records to see if there are any to view the details of in more specifically 
             }
-
             var launch = await _context.Launches
                 .FirstOrDefaultAsync(m => m.LaunchID == id);
             if (launch == null)
             {
-                return NotFound();
+                return NotFound(); // error 
             }
 
             return View(launch);
@@ -62,7 +61,7 @@ namespace Rapidlaunch.Controllers
         /// </summary>
         public IActionResult Create()
         {
-            return View();
+            return View(); // taken from boilerplate 
         }
 
         // POST: Launches/Create
@@ -75,13 +74,13 @@ namespace Rapidlaunch.Controllers
         /// <param name="launch">The Launch</param>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LaunchID,providerIdent,launchDate,launchName,padStatusIdenet,rocketIdentID")] Launch launch)
+        public async Task<IActionResult> Create([Bind("LaunchID,providerIdent,launchDate,launchName,padStatusIdenet,rocketIdentID")] Launch launch) // affixes the named atributes in the db 
         {
             if (ModelState.IsValid)
             {
                 _context.Add(launch);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); 
             }
             return View(launch);
         }
@@ -117,14 +116,14 @@ namespace Rapidlaunch.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LaunchID,providerIdent,launchDate,launchName,padStatusIdenet,rocketIdentID")] Launch launch)
+        public async Task<IActionResult> Edit(int id, [Bind("LaunchID,providerIdent,launchDate,launchName,padStatusIdenet,rocketIdentID")] Launch launch) // edits the afformentioned attributes 
         {
             if (id != launch.LaunchID)
             {
-                return NotFound();
+                return NotFound(); // checks there is a record to edit 
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // if there is then it checks the update of the database 
             {
                 try
                 {
@@ -135,16 +134,16 @@ namespace Rapidlaunch.Controllers
                 {
                     if (!LaunchExists(launch.LaunchID))
                     {
-                        return NotFound();
+                        return NotFound(); // returns error if there is no file there once they selected to delete 
                     }
                     else
                     {
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // edits 
             }
-            return View(launch);
+            return View(launch); // returns to index 
         }
 
         // GET: Launches/Delete/5
@@ -156,7 +155,7 @@ namespace Rapidlaunch.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound(); // checks it exists 
             }
 
             var launch = await _context.Launches
@@ -166,10 +165,12 @@ namespace Rapidlaunch.Controllers
                 return NotFound(); // checks if file is in db
             }
 
-            return View(launch);
+            return View(launch); // goes back if its not present
 
 
         }
+
+        // once its past verifiaction it goes to the ensuring that the user wants to delete it 
 
         // POST: Launches/Delete/5
         /// <summary>
@@ -181,9 +182,9 @@ namespace Rapidlaunch.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var launch = await _context.Launches.FindAsync(id);
-            _context.Launches.Remove(launch);
+            _context.Launches.Remove(launch); // command to remove the record from the db 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); // redirects the user back to the index 
         }
 
         /// <summary>

@@ -1,15 +1,15 @@
 ﻿@model Rapidlaunch.Models.Country
-
+<!-- uses the model from country -->
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
-
+<!-- reffered to as create  -->
 
 <hr />
-<div class="row justify-content-md-center">
-    <h4>Country</h4>
+<div class="row justify-content-md-center"> <!-- centering the whole thing for the user to have all devices -->
+    <h4>Country</h4> <!-- heading centralised -->
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,7 +26,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a> <!-- nav button -->
 </div>
 
 @section Scripts {

@@ -7,13 +7,13 @@ namespace Rapidlaunch.Models
 {
     public class ProviderAddress
     {
-       public int  ProviderID { get; set; }
-        public int AddressID { get; set; }
-       
-        public Provider Provider { get; set; }
-        public Address Address { get; set; }
+       public int  ProviderID { get; set; } // access modifier PUBLIC  - int is the data type  / get and set mutators
+        public int AddressID { get; set; }// access modifier PUBLIC  - int is the data type  / get and set mutators
 
-        public ICollection<Launch  > Launches    { get; set; }
+        public Provider Provider { get; set; } // uses as the candidtate keys 
+        public Address Address { get; set; } // uses as the candidtate keys 
+
+        public ICollection<Launch  > Launches    { get; set; } // // used as a functional key elsewhere in
 
     }
 }

@@ -96,15 +96,16 @@ namespace Rapidlaunch.Controllers
         /// <param name="id">The identifier</param>
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id == null) // it checks if the record is there in the db 
             {
-                return NotFound();
+                return NotFound(); // thros error if it isnt 
             }
 
-            var address = await _context.Addresses.FindAsync(id);
+            var address = await _context.Addresses.FindAsync(id);// it checks if the record is there in the db 
+
             if (address == null)
             {
-                return NotFound();
+                return NotFound();// throws error if it isnt 
             }
             ViewData["countryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", address.countryID);
             return View(address);
@@ -116,27 +117,25 @@ namespace Rapidlaunch.Controllers
         /// <summary>
         /// Edits the identifier
         /// </summary>
-        /// <param name="id">The identifier of address       </param>
-        /// <param name="address">The address   </param>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AddressID,addressLine1,addressLine2,addressLine3,countryID,postCode")] Address address)
-        {
-            if (id != address.AddressID)
+        public async Task<IActionResult> Edit(int id, [Bind("AddressID,addressLine1,addressLine2,addressLine3,countryID,postCode")] Address address) // all the attributes int he table binded to the id 
+        { 
+            if (id != address.AddressID) // checking the id is correct with an if not ! address id statement 
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // if it is correct and valid  - this will have another check in following apps 
             {
                 try
                 {
-                    _context.Update(address);
+                    _context.Update(address); // updating the changes 
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(address.AddressID))
+                    if (!AddressExists(address.AddressID)) // if it already exists throw an error 
                     {
                         return NotFound();
                     }
@@ -145,9 +144,9 @@ namespace Rapidlaunch.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // if it likes it then returns the indexed address 
             }
-            ViewData["countryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", address.countryID);
+            ViewData["countryID"] = new SelectList(_context.Countries, "CountryID", "CountryID", address.countryID); // 
             return View(address);
         }
 
@@ -160,7 +159,7 @@ namespace Rapidlaunch.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (id == null) // checking that it is clear to be deleted and needs to chekc if its ther in  the db 
             {
                 return NotFound();
             }
@@ -170,7 +169,7 @@ namespace Rapidlaunch.Controllers
                 .FirstOrDefaultAsync(m => m.AddressID == id);
             if (address == null)
             {
-                return NotFound();
+                return NotFound(); // error returned if the synch isnt returneds
             }
 
             return View(address);
@@ -186,9 +185,9 @@ namespace Rapidlaunch.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var address = await _context.Addresses.FindAsync(id);
-            _context.Addresses.Remove(address);
+            _context.Addresses.Remove(address); //removing from the db 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); // takes back to the home of the addresses to see the changed db 
         }
         /// <summary>
         /// Checks if the address already exists

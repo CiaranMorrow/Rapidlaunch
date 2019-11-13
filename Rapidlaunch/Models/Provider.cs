@@ -7,12 +7,12 @@ namespace Rapidlaunch.Models
 {
     public class Provider
     {
-        public int ProviderID { get; set; }
-        public string ProviderName { get; set; }
-        public int ProviderRegNo { get; set; }
+        public int ProviderID { get; set; } // access modifier PUBLIC  PK - int  is the data type  / get and set mutators
+        public string ProviderName { get; set; } // access modifier PUBLIC  - String is the data type  / get and set mutators
+        public int ProviderRegNo { get; set; }// access modifier PUBLIC  - int is the data type  / get and set mutators
 
-        public ICollection<ProviderContact> ProviderContacts{ get; set; }
-        public ICollection<ProviderAddress> ProviderAddresses{ get; set; }
+        public ICollection<ProviderContact> ProviderContacts{ get; set; } // used in ProviderContacts
+        public ICollection<ProviderAddress> ProviderAddresses{ get; set; } // used in ProviderAddresses
 
 
     }
